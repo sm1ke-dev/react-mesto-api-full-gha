@@ -1,0 +1,11 @@
+.popup__container_section_delete {
+  height: 181px;
+  padding: 34px 36px 36px;
+}
+
+@media screen and (max-width: 468px) {
+  .popup__container_section_delete {
+    height: 150px;
+    padding: 25px 22px;
+  }
+}

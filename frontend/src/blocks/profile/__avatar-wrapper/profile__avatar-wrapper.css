@@ -1,0 +1,5 @@
+.profile__avatar-wrapper {
+  position: relative;
+  cursor: pointer;
+  border-radius: 50%;
+}

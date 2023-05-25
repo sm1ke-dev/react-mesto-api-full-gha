@@ -1,0 +1,15 @@
+.popup__reset-button_close_main-popups {
+  margin: -74px -76px 0 0;
+}
+
+@media screen and (max-width: 580px) {
+  .popup__reset-button_close_main-popups {
+    margin-right: -37px;
+  }
+}
+
+@media screen and (max-width: 468px) {
+  .popup__reset-button_close_main-popups {
+    margin: -61px -22px 0 0;
+  }
+}

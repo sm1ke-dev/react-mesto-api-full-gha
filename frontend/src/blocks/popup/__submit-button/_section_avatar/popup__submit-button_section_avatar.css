@@ -1,0 +1,5 @@
+@media screen and (max-width: 468px) {
+  .popup__submit-button_section_avatar {
+    margin-top: 35px;
+  }
+}

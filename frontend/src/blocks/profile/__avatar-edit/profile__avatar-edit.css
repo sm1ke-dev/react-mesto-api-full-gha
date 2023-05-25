@@ -1,0 +1,13 @@
+.profile__avatar-edit {
+  visibility: hidden;
+  opacity: 0;
+  background-image: url(../../../images/Vector_pen.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  left: 47px;
+  top: 47px;
+  transition: .5s;
+}

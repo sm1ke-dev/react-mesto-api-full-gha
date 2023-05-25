@@ -1,0 +1,5 @@
+.profile__avatar-edit_shown {
+  visibility: visible;
+  opacity: 1;
+  transition: .5s;
+}
