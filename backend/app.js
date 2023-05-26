@@ -7,6 +7,8 @@ const auth = require('./middlewares/auth');
 const { REGEX_URL } = require('./utils/constants');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
+require('dotenv').config();
+
 const allowedCors = [
   'https://mesto.gud.nomoredomains.rocks',
   'http://mesto.gud.nomoredomains.rocks',
@@ -45,6 +47,12 @@ app.use((req, res, next) => {
   }
 
   return next();
+});
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
 });
 
 app.post('/signin', celebrate({
