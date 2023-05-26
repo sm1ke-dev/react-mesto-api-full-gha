@@ -33,13 +33,12 @@ const createUser = (req, res, next) => {
     .then((user) => res.status(201).send({ data: user }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        throw new BadRequestError('Некорректно заполненные данные');
+        return next(new BadRequestError('Некорректно заполненные данные'));
       } if (err.code === 11000) {
-        throw new ConflictingRequestError('Пользователь с таким Email уже существует');
+        return next(new ConflictingRequestError('Пользователь с таким Email уже существует'));
       }
-      throw err;
-    })
-    .catch(next);
+      return next(err);
+    });
 };
 
 const updateProfile = (req, res, next) => {
