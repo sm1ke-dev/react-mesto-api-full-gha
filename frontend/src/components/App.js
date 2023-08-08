@@ -34,32 +34,36 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    api
-      .getUserInfo()
-      .then((res) => {
-        setCurrentUser(res.data)
-        setCurrentUserEmail(res.data.email);
-      })
-      .catch((res) => console.log(res));
+    if (localStorage.getItem("token")) {
+      api
+        .getUserInfo()
+        .then((res) => {
+          setCurrentUser(res.data);
+          setCurrentUserEmail(res.data.email);
+        })
+        .catch((res) => console.log(res));
+    }
   }, []);
 
   useEffect(() => {
-    api
-      .getInitialCards()
-      .then((res) => setCards(res.data))
-      .catch((res) => console.log(res));
-  }, []);
+    if (localStorage.getItem("token")) {
+      api
+        .getInitialCards()
+        .then((res) => setCards(res.data))
+        .catch((res) => console.log(res));
+    }
+  }, [isLoggedIn]);
 
   useEffect(() => {
     tokenCheck();
-  }, []);
+  }, [isLoggedIn]);
 
   function tokenCheck() {
     if (localStorage.getItem("token")) {
       api
         .getUserInfo()
         .then((res) => {
-          setCurrentUser(res.data)
+          setCurrentUser(res.data);
           setCurrentUserEmail(res.data.email);
           setIsLoggedIn(true);
           navigate("/", { replace: true });
@@ -87,6 +91,7 @@ function App() {
     mestoAuth
       .register(email, password)
       .then((res) => {
+        console.log(res);
         setIsInfoToolkitSuccessful(true);
         setIsInfoToolkitOpen(true);
         setFormValue({ email: "", password: "" });
